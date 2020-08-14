@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'core',
     'user',
     'pages',
+    'listings',
+    'realtors',
 ]
 
 MIDDLEWARE = [
@@ -133,8 +135,8 @@ AUTH_USER_MODEL = 'core.User'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = '/vol/web/media'
-STATIC_ROOT = '/vol/web/static'
+STATIC_ROOT = '/vol/web/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app/static')
+    os.path.join(BASE_DIR, 'app/static'),
 ]
