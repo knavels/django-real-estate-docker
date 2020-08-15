@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'listings',
     'realtors',
     'accounts',
+    'contacts',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +144,15 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+# Email config
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = ''
+
+try:
+    from .local_settings import *
+    print("Running on development server")
+except:
+    print("Running on production server")

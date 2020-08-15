@@ -2,6 +2,7 @@ from django.contrib import messages, auth
 from django.shortcuts import render, redirect
 from secrets import compare_digest
 from django.contrib.auth import get_user_model
+from contacts.models import Contact
 
 
 def register(request):
@@ -68,5 +69,11 @@ def logout(request):
 
 
 def dashboard(request):
-    """handles dashboard page for showing dashboard to registered users"""
-    return render(request, 'accounts/dashboard.html')
+    """handles dashboard page for showing inquiries to registered users"""
+    user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
+
+    context = {
+        'contacts': user_contacts
+    }
+
+    return render(request, 'accounts/dashboard.html', context)
